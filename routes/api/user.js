@@ -11,7 +11,7 @@ const validateLoginInput = require('../../validation/login');
 
 // Load User model
 const { User } = require('../../models/user');
-const { CheckList } = require('../../models/checkList');
+const { Budget } = require('../../models/budget');
 
 // GET all users
 router.get('/', (req, res) => {
@@ -36,14 +36,14 @@ router.post('/register', (req, res) => {
         return res.status(400).json(errors);
     }
 
-    function createCheckList(user) {
-        const newFolder = new CheckList({
+    function createBudget(user) {
+        const newFolder = new Budget({
             user: user._id,
-            checkListFolders: []
+            budgetFolders: []
         })
         newFolder
             .save()
-            .then(checkList => res.json(checkList))
+            .then(budget => res.json(budget))
             .catch(err => console.log(err))
     }
 
@@ -65,7 +65,7 @@ router.post('/register', (req, res) => {
                         newUser.password = hash;
                         newUser
                             .save()
-                            .then(createCheckList(newUser))
+                            .then(createBudget(newUser))
                             .then(user => res.json(user))
                             .catch(err => console.log(err));
                     });

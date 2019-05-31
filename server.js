@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 
 const user = require('./routes/api/user');
-const checkList = require('./routes/api/checkList');
+const budget = require('./routes/api/budget');
 
 app.use(function (req, res, next) {
     var allowedOrigins = "http://localhost:3000";
@@ -40,7 +40,7 @@ require('./config/passport')(passport)
 
 // Routers
 app.use('/user', user);
-app.use('/checklist', checkList);
+app.use('/budget', budget);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {

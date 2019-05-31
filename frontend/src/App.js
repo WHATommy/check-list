@@ -12,8 +12,8 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Navbar></Navbar>
         <div className='App'>
+          <Navbar />
           <Route exact path='/' component={Landing} />
         </div>
       </Router>

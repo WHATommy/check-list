@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CheckListFolderDataSchema = new Schema({
+const BudgetFolderDataSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -24,7 +24,7 @@ const CheckListFolderDataSchema = new Schema({
     }
 });
 
-const CheckListFoldersSchema = new Schema({
+const BudgetFoldersSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -33,19 +33,19 @@ const CheckListFoldersSchema = new Schema({
         type: String,
         required: true
     },
-    checkListFolderData: [CheckListFolderDataSchema]
+    checkListFolderData: [BudgetFolderDataSchema]
 });
 
-const CheckListSchema = new Schema({
+const BudgetSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    checkListFolders: [CheckListFoldersSchema]
+    checkListFolders: [BudgetFoldersSchema]
 });
 
-const CheckList = mongoose.model('checklist', CheckListSchema);
-const CheckListFolder = mongoose.model('checklistfolders', CheckListFoldersSchema);
-const CheckListData = mongoose.model('checklistdata', CheckListFolderDataSchema);
+const Budget = mongoose.model('budget', BudgetSchema);
+const BudgetFolder = mongoose.model('budgetfolders', BudgetFoldersSchema);
+const BudgetData = mongoose.model('budgetdata', BudgetFolderDataSchema);
 
-module.exports = { CheckList, CheckListFolder, CheckListData };
+module.exports = { Budget, BudgetFolder, BudgetData };
